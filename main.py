@@ -20,8 +20,11 @@ def get_or_create_entries():
 
         if "author" in args:
             author = args["author"]
-            entries = [e for e in entries if e["entries"].lower() ==
-                       author.lower()]
+            filtered_entries = []
+            for entry in entries:
+                if entry["author"].lower() == author.lower():
+                    filtered_entries.append(entry)
+            entries = filtered_entries
 
         return entries
 
